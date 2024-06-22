@@ -1,0 +1,21 @@
+import java.util.Scanner;
+class NumPalindrome {
+    public static void main(String[] args) {
+         Scanner sc=new Scanner(System.in);
+        int s=sc.nextInt();
+        int s1=s;
+        int s2=0;
+        int count=0;
+        while(s1>0){
+            s2+=s1%10*Math.pow(10,count);
+            s1=s1/10;
+            count++;
+        }
+        if(s==s2){
+            System.out.print("Palindrome");
+        }
+        else{
+            System.out.print("Not a Palindrome");
+        }
+    }
+}
