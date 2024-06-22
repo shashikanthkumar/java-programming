@@ -1,0 +1,11 @@
+import java.util.Scanner;
+class Persqr{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int n1=(int)Math.sqrt(n);
+        if(Math.sqrt(n)==n1){
+            System.out.print(n+" is a perfect square");
+        }
+    }
+}
