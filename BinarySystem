@@ -1,0 +1,30 @@
+import java.util.*;
+import java.util.Scanner;
+class BinarySystem {
+    public static void main (String[]args)
+  {
+    Scanner sc = new Scanner (System.in);
+    String str = sc.next ();
+    System.out.println (operationsBinaryString (str));
+  }
+    static int operationsBinaryString (String str){
+        if(str==null){
+            return -1;
+        }
+        int rev=str.charAt(0)-'0';
+        for(int i=2;i<str.length();i=i+2){
+            char c=str.charAt(i-1);
+            int cur=str.charAt(i)-'0';
+            if(c=='A'){
+                rev=rev&cur;
+            }
+            else if(c=='B'){
+                rev=rev|cur;
+            }
+            else if(c=='C'){
+                rev=rev^cur;
+            }
+        }
+        return rev;
+    }
+}
