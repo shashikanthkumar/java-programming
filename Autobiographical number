@@ -1,0 +1,24 @@
+import java.util.*;
+import java.util.Scanner;
+class Autonum {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String n=sc.nextLine();
+        int arr[]=new int[10];
+        for(int i=0;i<n.length();i++){
+            int s=n.charAt(i)-'0';
+            arr[s]++;
+        }
+        System.out.println(Autonum(arr,n));
+    }
+    static int Autonum(int[] arr,String n){
+        int count=0;
+        for(int i=0;i<n.length();i++){
+            int digit=n.charAt(i)-'0';
+            if(digit==arr[i]&&digit>0){
+                count++;
+            }
+        }
+        return count;
+    }
+}
