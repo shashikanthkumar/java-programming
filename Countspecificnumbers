@@ -1,0 +1,29 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class countspecificnumbers {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        System.out.println(find(n,m));
+    }
+    static int find(int n,int m){
+        int count=0;
+        while(n<m){
+            count+=countspecific(n);
+            n++;
+        }
+        return count;
+    }
+    static int countspecific(int n){
+        String s=String.valueOf(n);
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)!='1'&&s.charAt(i)!='4'&&s.charAt(i)!='9'){
+                return 0;
+            }
+        }
+        return 1;
+        
+    }
+}
