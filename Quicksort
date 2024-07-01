@@ -1,0 +1,35 @@
+import java.util.*;
+import java.util.Arrays;
+class Quicksort{
+    public static void main(String[] args) {
+        int[] arr={9,8,7,6,5,4,3,2,1};
+        int low=0;
+        int high=arr.length-1;
+        quicksort(arr,low,high);
+        System.out.print(Arrays.toString(arr));
+    }
+    static void quicksort(int[] arr,int low,int high){
+        if(low>=high){
+            return;
+        }
+        int s=low;
+        int e=high;
+        int pivot=arr[(s+e)/2];
+        while(s<=e){
+            while(arr[s]<=pivot){
+                s++;
+            }
+            while(arr[e]>=pivot){
+                e--;
+            }
+            if(s<=e&&arr[s]>pivot&& pivot>arr[e]){
+                int temp=arr[s];
+                arr[s]=arr[e];
+                arr[e]=temp;
+            }
+        }
+        quicksort(arr,low,e);
+        quicksort(arr,s,high);
+    }
+    
+}
