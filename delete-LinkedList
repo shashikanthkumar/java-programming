@@ -1,0 +1,63 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+class Main{
+public static class Node{
+    public int value;
+    public Node next;
+    public Node(int val){
+        value=val;
+        next=null;
+    }
+}
+public static class LinkedList{
+    public Node head;
+    public Node tail;
+    public void insertAtEnd(int value){
+        Node newnode=new Node(value);
+        if(head==null){
+            head=newnode;
+            tail=newnode;
+            return;
+        }
+        tail.next=newnode;
+        tail=newnode;
+    }
+    public void deleteNode(int s){
+        if(head.value==s){
+            Node targetNode=head;
+            head=head.next;
+            return;
+        }
+        Node itr=head;
+        while(itr.next!=null){
+            if(itr.next.value==s){
+                itr.next=itr.next.next;
+                return;
+        }
+        itr=itr.next;
+    }
+    }
+    
+    public void print(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.printf("%d ",temp.value);
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+}
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        LinkedList list=new LinkedList();
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++){
+            int a=sc.nextInt();
+            list.insertAtEnd(a);
+        }
+        int s=sc.nextInt();
+        list.deleteNode(s);
+        list.print();
+    }
+}
