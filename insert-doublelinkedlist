@@ -1,0 +1,85 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+public class DoubleLinkedList{
+    private class Node{
+        int value;
+        Node next;
+        Node prev;
+        public Node(int val){
+            value=val;
+            next=null;
+            prev=null;
+        }
+    }Node head;
+    public DoubleLinkedList(){
+        head=null;
+    }
+    public void insertAtfirst(int val){
+        Node newNode=new Node(val);
+        if(head==null){
+            head=newNode;
+        }
+        else{
+            Node itr=head;
+            while(itr.next!=null){
+                itr=itr.next;
+            }
+            itr.next=newNode;
+            newNode.prev=itr;
+        }
+    }
+    public void insertAtK(int index,int val){
+        Node newNode=new Node(val);
+        if(index==0){
+            if(head!=null){
+                head.prev=newNode;
+            }
+            head=newNode;
+            newNode=head;
+        }
+        else{
+            Node itr=head;
+            int i=0;
+            while(i<index-1 && itr.next!=null){
+                itr=itr.next;
+                i++;
+            }
+            if (itr != null && itr.next != null) {
+                Node A = itr;
+                Node B = itr.next;
+
+                A.next = newNode;
+                newNode.prev = A;
+                newNode.next = B;
+                B.prev = newNode;
+            } else if (itr != null) { // Inserting at the end
+                itr.next = newNode;
+                newNode.prev = itr;
+            }
+        }
+    }
+    public void print(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.value + " ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    public static void main(String[] args){
+        DoubleLinkedList list=new DoubleLinkedList();
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+            list.insertAtfirst(a);
+        }
+        list.print();
+        int index = sc.nextInt();
+        int value = sc.nextInt();
+        list.insertAtK(index, value);
+        list.print();
+        sc.close();
+    }
+}
